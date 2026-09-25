@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "368016a2-fcec-430c-85e5-fb9bfb0a2608",
+    "name": "Employee Directory API Docs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58523115",
+    "_collection_link": "https://go.postman.co/collection/58523115-368016a2-fcec-430c-85e5-fb9bfb0a2608?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Vijaya\",\r\n    \"email\": \"vijaya@gmail.com\",\r\n    \"phone\": \"9876543210\",\r\n    \"department\": \"IT\",\r\n    \"designation\": \"Python Developer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/employees",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "employees"
+          ]
+        },
+        "description": "Creates a new employee in the Employee Directory.\n\nMethod: POST  \nEndpoint: /employees\n\nRequired fields:\n\n- name\n    \n- email\n    \n- phone\n    \n- department\n    \n- designation\n    \n\nThe email must be unique."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Employees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/employees",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "employees"
+          ]
+        },
+        "description": "Retrieves all employees from the Employee Directory.\n\nMethod: GET  \nEndpoint: /employees\n\nReturns a list of all employees."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Employee by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/employees/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "employees",
+            "2"
+          ]
+        },
+        "description": "Retrieves a single employee using the employee ID.\n\nMethod: GET  \nEndpoint: /employees/{employee_id}\n\nPath parameter:\n\n- employee_id: ID of the employee to retrieve\n    \n\nReturns 404 if the employee does not exist."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Employee",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Vijaya Ashritha\",\r\n    \"email\": \"vijaya.ashritha@gmail.com\",\r\n    \"phone\": \"9490876543\",\r\n    \"department\": \"Development\",\r\n    \"designation\": \"Python Developer\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/employees/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "employees",
+            "2"
+          ]
+        },
+        "description": "Updates an existing employee using the employee ID.\n\nMethod: PUT  \nEndpoint: /employees/{employee_id}\n\nRequired fields:\n\n- name\n    \n- email\n    \n- phone\n    \n- department\n    \n- designation\n    \n\nThe email must be unique.  \nReturns 404 if the employee does not exist."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Employee",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/employees/2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "employees",
+            "2"
+          ]
+        },
+        "description": "Deletes an employee using the employee ID.\n\nMethod: DELETE  \nEndpoint: /employees/{employee_id}\n\nPath parameter:\n\n- employee_id: ID of the employee to delete\n    \n\nReturns 204 No Content when the employee is successfully deleted.  \nReturns 404 if the employee does not exist."
+      },
+      "response": []
+    }
+  ]
+}

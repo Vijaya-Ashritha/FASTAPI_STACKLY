@@ -146,7 +146,7 @@ def update_employee(employee_id: int, employee: EmployeeUpdate):
 #DELTED EMPLOYEE
 @router.delete("/{employee_id}", status_code=204)
 def delete_employee(employee_id: int):
-    connection = get_connection
+    connection = get_connection()
 
     employee = connection.execute(
         "SELECT * FROM employees WHERE id = ?",
