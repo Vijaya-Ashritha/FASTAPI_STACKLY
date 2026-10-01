@@ -1,0 +1,301 @@
+{
+  "info": {
+    "_postman_id": "4cc0d9e2-c3bf-4d99-b753-7e0e8b3b1cd5",
+    "name": "Task-management-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58523115",
+    "_collection_link": "https://go.postman.co/collection/58523115-4cc0d9e2-c3bf-4d99-b753-7e0e8b3b1cd5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"task_id\": 1,\r\n    \"task_title\": \"Complete FastAPI Project\",\r\n    \"description\": \"Develop Task Management API\",\r\n    \"priority\": \"High\",\r\n    \"status\": \"Pending\",\r\n    \"due_date\": \"2026-10-15\",\r\n    \"assigned_to\": \"John\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ]
+        },
+        "description": "This test verifies that a new task can be created successfully when all required fields contain valid data."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ]
+        },
+        "description": "This test verifies that the API returns all tasks stored in the SQLite database."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            "1"
+          ]
+        },
+        "description": "This test verifies that a specific task can be retrieved using its task ID."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"task_id\": 1,\r\n    \"task_title\": \"Complete FastAPI Task\",\r\n    \"description\": \"Finish CRUD operations and testing\",\r\n    \"priority\": \"Medium\",\r\n    \"status\": \"In Progress\",\r\n    \"due_date\": \"2026-10-20\",\r\n    \"assigned_to\": \"John\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            "1"
+          ]
+        },
+        "description": "This test verifies that an existing task can be updated with new title, description, priority, status, due date, and assigned person."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/?status=Pending",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "Pending"
+            }
+          ]
+        },
+        "description": "This test verifies that the API returns only tasks whose status is `Pending.`"
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/?priority=High",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ],
+          "query": [
+            {
+              "key": "priority",
+              "value": "High"
+            }
+          ]
+        },
+        "description": "This test verifies that the API returns only tasks whose priority is `High`."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/?assigned_to=John",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ],
+          "query": [
+            {
+              "key": "assigned_to",
+              "value": "John"
+            }
+          ]
+        },
+        "description": "This test verifies that the API returns tasks assigned to the specified person."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/?status=Completed",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "Completed"
+            }
+          ]
+        },
+        "description": "This test verifies that the API returns only tasks with `Completed` status."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"task_id\": 10,\r\n    \"task_title\": \"Invalid Priority Test\",\r\n    \"description\": \"Testing invalid priority\",\r\n    \"priority\": \"Urgent\",\r\n    \"status\": \"Pending\",\r\n    \"due_date\": \"2026-10-15\",\r\n    \"assigned_to\": \"John\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            ""
+          ]
+        },
+        "description": "This test verifies that Pydantic rejects a priority value that is not included in the allowed values `Low`, `Medium`, or `High`."
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/1 ",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            "1 "
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
