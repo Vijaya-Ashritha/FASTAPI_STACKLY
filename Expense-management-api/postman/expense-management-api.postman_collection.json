@@ -1,0 +1,316 @@
+{
+  "info": {
+    "_postman_id": "b06cd29f-050a-4b91-a68a-c2b89b5e8d3f",
+    "name": "Expense-management-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58523115",
+    "_collection_link": "https://go.postman.co/collection/58523115-b06cd29f-050a-4b91-a68a-c2b89b5e8d3f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "expenses",
+      "item": [
+        {
+          "name": "create expense",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"expense_id\": 1,\r\n    \"employee_name\": \"Rahul\",\r\n    \"category_id\": 1,\r\n    \"amount\": 1500,\r\n    \"description\": \"Travel expense\",\r\n    \"expense_date\": \"2026-10-06\",\r\n    \"payment_method\": \"UPI\",\r\n    \"status\": \"Pending\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                ""
+              ]
+            },
+            "description": "Creates a new employee expense when all required fields are valid and the category exists."
+          },
+          "response": []
+        },
+        {
+          "name": "get all expenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                ""
+              ]
+            },
+            "description": "Retrieves all employee expenses stored in the database."
+          },
+          "response": []
+        },
+        {
+          "name": "get expense by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                "1"
+              ]
+            },
+            "description": "Retrieves a specific expense using its expense ID."
+          },
+          "response": []
+        },
+        {
+          "name": "duplicated id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/999",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                "999"
+              ]
+            },
+            "description": "Verifies that the API returns a proper error when an expense does not exist."
+          },
+          "response": []
+        },
+        {
+          "name": "update expense",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"expense_id\": 1,\r\n    \"employee_name\": \"Rahul\",\r\n    \"category_id\": 1,\r\n    \"amount\": 2000,\r\n    \"description\": \"Updated travel expense\",\r\n    \"expense_date\": \"2026-10-06\",\r\n    \"payment_method\": \"Card\",\r\n    \"status\": \"Approved\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                "1"
+              ]
+            },
+            "description": "Updates the details of an existing expense."
+          },
+          "response": []
+        },
+        {
+          "name": "delete expenses",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/expenses/1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "expenses",
+                "1"
+              ]
+            },
+            "description": "Deletes an existing expense using its expense ID."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "create category",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"expense_id\": 1,\r\n    \"employee_name\": \"Rahul\",\r\n    \"category_id\": 1,\r\n    \"amount\": 1500,\r\n    \"description\": \"Travel expense\",\r\n    \"expense_date\": \"2026-10-06\",\r\n    \"payment_method\": \"UPI\",\r\n    \"status\": \"Pending\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/expenses/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "expenses",
+            ""
+          ]
+        },
+        "description": "1. Creates a new expense category with a unique category ID and category name.\n    \n2. Verifies that duplicate category IDs are not allowed.\n    \n3. Verifies that duplicate category names cannot be created even when the category ID is different."
+      },
+      "response": []
+    },
+    {
+      "name": "get all categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "categories",
+            ""
+          ]
+        },
+        "description": "Retrieves all categories stored in the SQLite database."
+      },
+      "response": []
+    },
+    {
+      "name": "get category  by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/999",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "categories",
+            "999"
+          ]
+        },
+        "description": "Retrieves a specific category using its category ID."
+      },
+      "response": []
+    },
+    {
+      "name": "update category",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"category_id\": 1,\r\n    \"category_name\": \"Business Travel\",\r\n    \"description\": \"Business related travel expenses\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "categories",
+            "1"
+          ]
+        },
+        "description": "Updates the name and description of an existing category."
+      },
+      "response": []
+    },
+    {
+      "name": "delete category",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/categories/1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "categories",
+            "1"
+          ]
+        },
+        "description": "Deletes an existing category that is not associated with any expense."
+      },
+      "response": []
+    }
+  ]
+}
