@@ -1,0 +1,523 @@
+{
+  "info": {
+    "_postman_id": "ff6fa25c-17ac-4062-852d-22dca1f6f514",
+    "name": "User-authentication-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58523115",
+    "_collection_link": "https://go.postman.co/collection/58523115-ff6fa25c-17ac-4062-852d-22dca1f6f514?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"phone_number\": \"9876543210\",\r\n    \"password\": \"John@1234\",\r\n    \"role\": \"User\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "register"
+          ]
+        },
+        "description": "Checks whether a new user can be registered successfully and the password is stored as a hash."
+      },
+      "response": []
+    },
+    {
+      "name": "register admin user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"Admin User\",\r\n    \"email\": \"admin@example.com\",\r\n    \"phone_number\": \"9876543211\",\r\n    \"password\": \"Admin@1234\",\r\n    \"role\": \"Admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "register"
+          ]
+        },
+        "description": "Checks registration with the `Admin` role."
+      },
+      "response": []
+    },
+    {
+      "name": "register duplicate email",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"Another User\",\r\n    \"email\": \"john@example.com\",\r\n    \"phone_number\": \"9876543212\",\r\n    \"password\": \"Another@123\",\r\n    \"role\": \"User\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "register"
+          ]
+        },
+        "description": "Checks that duplicate emails are not allowed."
+      },
+      "response": []
+    },
+    {
+      "name": "register invalid email",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"Test User\",\r\n    \"email\": \"invalid-email\",\r\n    \"phone_number\": \"9876543213\",\r\n    \"password\": \"Test@1234\",\r\n    \"role\": \"User\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "register"
+          ]
+        },
+        "description": "Checks Pydantic email validation."
+      },
+      "response": []
+    },
+    {
+      "name": "register invalid role",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"Test User\",\r\n    \"email\": \"role@example.com\",\r\n    \"phone_number\": \"9876543215\",\r\n    \"password\": \"Role@1234\",\r\n    \"role\": \"Manager\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "register"
+          ]
+        },
+        "description": "Checks Enum validation. Only `Admin` and `User` are allowed."
+      },
+      "response": []
+    },
+    {
+      "name": "login - valid",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"John@1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "login"
+          ]
+        },
+        "description": "StartFragmenthecks successful login using the correct email and password.EndFragment"
+      },
+      "response": []
+    },
+    {
+      "name": "login-incorrect password",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"Wrong@1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login - non-existing email",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"unknown@example.com\",\r\n    \"password\": \"John@1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get user by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/8",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "8"
+          ]
+        },
+        "description": "StartFragmentGets a specific user using the `user_id` path parameter.EndFragment"
+      },
+      "response": []
+    },
+    {
+      "name": "get non-existing-user",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "filter user by role",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users?role=Admin",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "Admin"
+            }
+          ]
+        },
+        "description": "StartFragment\n\nReturns only users whose role is `Admin`.\n\nEndFragment"
+      },
+      "response": []
+    },
+    {
+      "name": "filter users by user role",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users?role=User",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "User"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "invalid role filter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users?role=Manager",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "Manager"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "search user by name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users?name=John",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "John"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "filter by role and name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users?role=User&name=John",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "role",
+              "value": "User"
+            },
+            {
+              "key": "name",
+              "value": "John"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update user",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"full_name\": \"John Updated\",\r\n    \"email\": \"johnupdated@example.com\",\r\n    \"phone_number\": \"9999999999\",\r\n    \"role\": \"User\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/8",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "8"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete by user id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/8",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "8"
+          ]
+        },
+        "description": "StartFragment\n\nChecks whether a user can be deleted successfully.\n\n> \n\nIn Postman, an empty response for `204` is expected.\n\n \n  \n\nEndFragment"
+      },
+      "response": []
+    }
+  ]
+}
