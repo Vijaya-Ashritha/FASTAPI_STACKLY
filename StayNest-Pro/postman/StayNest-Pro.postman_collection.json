@@ -1,0 +1,122 @@
+{
+  "info": {
+    "name": "StayNest Pro API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "token",
+      "value": "PASTE_ACCESS_TOKEN_HERE"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Register customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"full_name\":\"Demo Customer\",\"email\":\"demo@example.com\",\"password\":\"ChangeMe123!\"}"
+        },
+        "url": "{{baseUrl}}/api/v1/auth/register"
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"demo@example.com\",\"password\":\"ChangeMe123!\"}"
+        },
+        "url": "{{baseUrl}}/api/v1/auth/login"
+      }
+    },
+    {
+      "name": "List approved hotels",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/hotels"
+      }
+    },
+    {
+      "name": "Create hotel (HOTEL_OWNER or ADMIN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Demo Hotel\",\"description\":\"Example property\",\"address\":\"1 Main Street\",\"city\":\"Visakhapatnam\",\"country\":\"India\",\"amenities\":[\"WiFi\",\"Parking\"]}"
+        },
+        "url": "{{baseUrl}}/api/v1/hotels"
+      }
+    },
+    {
+      "name": "List rooms",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/rooms"
+      }
+    },
+    {
+      "name": "Module catalog",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/modules/catalog"
+      }
+    },
+    {
+      "name": "Create review record (generic starter)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"data\":{\"hotel_id\":1,\"rating\":5,\"comment\":\"Nice stay\"}}"
+        },
+        "url": "{{baseUrl}}/api/v1/modules/reviews"
+      }
+    }
+  ]
+}
